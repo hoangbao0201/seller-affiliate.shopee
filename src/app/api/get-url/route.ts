@@ -1,8 +1,7 @@
 import axios from "axios";
-import * as cheerio from "cheerio";
 import { NextRequest } from "next/server";
 
-export async function GET(req: NextRequest, route: { params: { id: string } }) {
+export async function GET(req: NextRequest) {
     const slug = req.nextUrl.searchParams.get("slug") as string;
 
     const response = await axios.post(

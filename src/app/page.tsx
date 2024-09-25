@@ -1,7 +1,6 @@
 "use client";
 
 import axios from "axios";
-import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useCopyToClipboard, useDebounceValue } from "usehooks-ts";
 
@@ -13,7 +12,7 @@ export default function Home() {
         longLink: string;
     }>(null);
 
-    const [copiedText, copy] = useCopyToClipboard()
+    const [, copy] = useCopyToClipboard()
 
   const handleCopy = (text: string) => () => {
     copy(text)
@@ -28,7 +27,7 @@ export default function Home() {
     const handle = async () => {
         try {
             setLoad(false);
-            const dataGRes: any = await axios.get("/api/get-url?slug=" + link);
+            const dataGRes: any = await axios.get('/api/get-url?slug=' + link);
 
             if (dataGRes.data.success) {
                 setDataGenaratorLink({
